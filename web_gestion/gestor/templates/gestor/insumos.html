@@ -1,0 +1,14 @@
+{% extends "gestor/base.html" %}
+
+{% block content %}
+<h3>Gestión de Insumos</h3>
+<h4>Insumos Cargados</h4>
+{% for insumo in insumos %}
+    <div>
+        <h5>{{ insumo.nombre }}</h5>
+        <span class="date">{{ insumo.created|date:"SHORT_DATE_FORMAT" }}</span>
+        <p>{{ insumo.stock }}</p>
+    </div>
+{% endfor %}
+<a href="/">Inicio<a></a>
+{% endblock %}

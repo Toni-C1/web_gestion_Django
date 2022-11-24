@@ -1,0 +1,13 @@
+
+{% block content %}
+<h3>Gestión de Productos</h3>
+        <h4>Productos cargados:</h4>
+        {% for producto in productos %}
+            <div>
+                <h5>{{ producto.nombre }}</h5>
+                <span class="date">{{ producto.created|date:"SHORT_DATE_FORMAT" }}</span>
+                <p>{{ producto.stock }}</p>
+            </div>
+        {% endfor %}
+        <a href="/">Inicio<a>
+{% endblock %}

@@ -5,7 +5,8 @@
 from django.db import models
 
 # Create your models here.
-class Producto(models.Model):
+class Productos(models.Model):
+    id = models.IntegerField(primary_key=True, unique=True, auto_created=True)
     nombre = models.CharField(max_length=100)
     stock = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True)
@@ -18,7 +19,8 @@ class Producto(models.Model):
         verbose_name = "Producto"
         verbose_name_plural = "Productos"
 
-class Insumo(models.Model):
+class Insumos(models.Model):
+    id = models.IntegerField(primary_key=True, unique=True, auto_created=True)
     nombre = models.CharField(max_length=100)
     stock = models.IntegerField()
     created = models.DateTimeField(auto_now_add=True, verbose_name="Creado")

@@ -19,14 +19,18 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from gestor.views import home, productos, insumos
+from gestor.views import *
 from django.conf import settings             
 from django.conf.urls.static import static
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
-    path('productos/', productos),
-    path('insumos/', insumos),
+    path('productos_crear/', productos_crear),
+    path('productos_editar/<int:id_i>', productos_editar),
+    path('productos_eliminar/<int:id_i>', productos_eliminar),
+    path('insumos_crear/', insumos_crear),
+    path('insumos_editar/<int:id_i>', insumos_editar),
+    path('insumos_eliminar/<int:id_i>', insumos_eliminar),
   ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

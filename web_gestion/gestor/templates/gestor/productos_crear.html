@@ -1,0 +1,45 @@
+{% extends "gestor/base.html" %}
+
+{% block content %}
+<h3>Gestión de Productos</h3>
+
+    <h4>Productos cargados:</h4>
+        <table id="cartera" class="table table-striped">
+            <thead>
+                <tr>
+                    <td>Producto</td>
+                    <td>Stock</td>
+                    <td>Fecha carga</td>
+                    <td>Fecha modificado</td>
+                </tr>
+            </thead>
+            <tbody>
+                
+                {% for producto in productos %}
+                    <tr>
+                    <td>{{ producto.nombre }}</td>
+                    <td>{{ producto.stock }}</td>
+                    <td>{{ producto.created|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td>{{ producto.modified|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td><a href="/productos_editar/{{ producto.id }}">Modificar</a></td>
+                    <td><a href="/productos_eliminar/{{ producto.id }}">Eliminar</a></td>
+                    </tr>
+                {% endfor %}
+                
+            </tbody>
+        
+        </table>
+        <nav>
+            <h4>Cargar nuevo producto:</h4>
+            <form method="POST" class="post-form">{% csrf_token %}
+
+                {{ form.as_p }}
+            
+            <button type="submit" class="save btn btn-default">Guardar</button>
+            </form>
+        </nav>
+    
+
+
+        <a href="/">Inicio<a>
+{% endblock %}

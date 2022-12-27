@@ -21,20 +21,35 @@
             <td>{{ insumo.stock }}</td>
             <td>{{ insumo.created|date:"SHORT_DATE_FORMAT" }}</td>
             <td>{{ insumo.modified|date:"SHORT_DATE_FORMAT" }}</td>
+            <td><a href="/insumos_editar/{{ insumo.id }}">Modificar</a></td>
+            <td><a href="/insumos_eliminar/{{ insumo.id }}">Eliminar</a></td>
             </tr>
         {% endfor %}
         
     </tbody>
 
 </table>
-<nav>
-    <h4>Cargar nuevo insumo:</h4>
-    <form method="POST" class="post-form">{% csrf_token %}
 
-        {{ form.as_p }}
-    
-        <button type="submit" class="save btn btn-default">Guardar</button>
+<nav>
+
+    <h4>Modificar insumo:</h4>
+
+
+    <form method = 'POST' enctype="multipart/form-data">
+        {% csrf_token %}
+        <table class = 'w-50 table table-light'>
+            {% for field in form_e %}
+            <tr>
+                <th>{{field.label}}</th>
+                <td>{{ field }}</td>
+            </tr>
+            {% endfor %}
+        </table>
+        <button type="submit" class="btn btn-lg btn-warning">Guardar</button>
     </form>
+
+
+
 </nav>
 
 <a href="/">Inicio<a></a>

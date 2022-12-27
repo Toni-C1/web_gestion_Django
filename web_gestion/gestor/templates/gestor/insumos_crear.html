@@ -1,0 +1,43 @@
+{% extends "gestor/base.html" %}
+
+{% block content %}
+<h3>Gestión de Insumos</h3>
+<h4>Insumos Cargados</h4>
+
+<table id="cartera" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Insumo</td>
+            <td>Stock</td>
+            <td>Fecha carga</td>
+            <td>Fecha modificado</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for insumo in insumos %}
+            <tr>
+            <td>{{ insumo.nombre }}</td>
+            <td>{{ insumo.stock }}</td>
+            <td>{{ insumo.created|date:"SHORT_DATE_FORMAT" }}</td>
+            <td>{{ insumo.modified|date:"SHORT_DATE_FORMAT" }}</td>
+            <td><a href="/insumos_editar/{{ insumo.id }}">Modificar</a></td>
+            <td><a href="/insumos_eliminar/{{ insumo.id }}">Eliminar</a></td>
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+
+</table>
+<nav>
+    <h4>Cargar nuevo insumo:</h4>
+    <form method="POST" class="post-form">{% csrf_token %}
+
+        {{ form_c.as_p }}
+    
+        <button type="submit" class="save btn btn-default">Guardar</button>
+    </form>
+</nav>
+
+<a href="/">Inicio<a></a>
+{% endblock %}

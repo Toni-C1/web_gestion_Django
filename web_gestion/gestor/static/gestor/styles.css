@@ -34,6 +34,12 @@ p {
     line-height: 1.1rem;
 } 
 
+form { 
+    font-size: 75%; 
+    text-align: justify;
+    line-height: 1.1rem;
+} 
+
 a{ 
     font-size: 90%; 
     color: rgb(115, 155, 255);
@@ -48,16 +54,3 @@ p > a {
     text-align: justify;
 }
 
-a.edit {
-    color: rgb(255, 30, 18);
-}
-
-a.edit:hover {
-    color: rgb(255, 78, 69);
-}
-
-img.top {
-    height: 150px;
-    width: 150px;
-    padding: 0.5rem 0 1rem;
-}

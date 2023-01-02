@@ -9,7 +9,7 @@ def home(request):
     return render(request, "gestor/home.html")
 
 def productos_crear(request):
-    productos = Productos_l.objects.all()
+    productos = Productos_li.objects.all()
     
     #####################################
 
@@ -39,8 +39,8 @@ def productos_editar(request, id_i):
     id_i = int(id_i)
 
     try:
-        producto_sel = Productos_l.objects.get(id=id_i)
-    except Productos_l.DoesNotExist:
+        producto_sel = Productos_li.objects.get(id=id_i)
+    except Productos_li.DoesNotExist:
         return redirect('/productos_crear')
  
     
@@ -54,7 +54,7 @@ def productos_editar(request, id_i):
         return redirect("/productos_crear")
 
 
-    productos = Productos_l.objects.all()
+    productos = Productos_li.objects.all()
 
     context = {
         'form_e': form_e,
@@ -65,15 +65,15 @@ def productos_editar(request, id_i):
 
 def productos_eliminar(request, id_i):
     
-    id_productos = Productos_l.objects.get(id=id_i)
+    id_productos = Productos_li.objects.get(id=id_i)
     
     id_productos.delete()
     
     return redirect("/productos_crear")
 
 def insumos_crear(request):
-    insumos = Insumos_l.objects.all()
-    envases = Envases.objects.all()
+    insumos = Insumos_li.objects.all()
+    envases = Envases_li.objects.all()
 
     #####################################
     #Formulario para cargar nuevo insumo a la bd
@@ -102,8 +102,8 @@ def insumos_editar(request, id_i):
     id_i = int(id_i)
 
     try:
-        insumo_sel = Insumos_l.objects.get(id=id_i)
-    except Insumos_l.DoesNotExist:
+        insumo_sel = Insumos_li.objects.get(id=id_i)
+    except Insumos_li.DoesNotExist:
         return redirect('/insumos_crear')
  
     
@@ -117,8 +117,8 @@ def insumos_editar(request, id_i):
         return redirect("/insumos_crear")
 
 
-    insumos = Insumos_l.objects.all()
-    envases = Envases.objects.all()
+    insumos = Insumos_li.objects.all()
+    envases = Envases_li.objects.all()
 
     context = {
         'form_e': form_e,
@@ -130,16 +130,15 @@ def insumos_editar(request, id_i):
 
 def insumos_eliminar(request, id_i):
     
-    id_insumos = Insumos_l.objects.get(id=id_i)
+    id_insumos = Insumos_li.objects.get(id=id_i)
     
     id_insumos.delete()
     
     return redirect("/insumos_crear")
   
-
 def envases_crear(request):
-    insumos = Insumos_l.objects.all()
-    envases = Envases.objects.all()
+    insumos = Insumos_li.objects.all()
+    envases = Envases_li.objects.all()
 
     #####################################
     #Formulario para cargar nuevo insumo a la bd
@@ -168,8 +167,8 @@ def envases_editar(request, id_i):
     id_i = int(id_i)
 
     try:
-        envase_sel = Envases.objects.get(id=id_i)
-    except Envases.DoesNotExist:
+        envase_sel = Envases_li.objects.get(id=id_i)
+    except Envases_li.DoesNotExist:
         return redirect('/envases_crear')
  
     
@@ -183,8 +182,8 @@ def envases_editar(request, id_i):
         return redirect("/envases_crear")
 
 
-    insumos = Insumos_l.objects.all()
-    envases = Envases.objects.all()
+    insumos = Insumos_li.objects.all()
+    envases = Envases_li.objects.all()
 
     context = {
         'form_e': form_e,
@@ -196,7 +195,7 @@ def envases_editar(request, id_i):
 
 def envases_eliminar(request, id_i):
     
-    id_envases = Envases.objects.get(id=id_i)
+    id_envases = Envases_li.objects.get(id=id_i)
     
     id_envases.delete()
     

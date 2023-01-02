@@ -5,6 +5,43 @@ from django.http import HttpResponse
 
 # Create your views here.
 
+def index(request):
+
+    ##chekeo de Productos por debajo de punto de pedido##
+    productos = Productos_li.objects.all()
+
+    pocos_productos = []
+
+    for producto in productos:
+        if producto.stock <= producto.punto_de_pedido:
+            pocos_productos.append(producto)
+
+    ##chekeo de Insumos por debajo de punto de pedido##
+    insumos = Insumos_li.objects.all()
+    
+
+    pocos_insumos = []
+
+    for insumo in insumos:
+        if insumo.stock <= insumo.punto_de_pedido:
+            pocos_insumos.append(insumo)
+    
+    ##chekeo de Envases por debajo de punto de pedido##
+    envases = Envases_li.objects.all()
+    pocos_envases = []
+    
+    for envase in envases:
+        if insumo.stock <= insumo.punto_de_pedido:
+            pocos_envases.append(envase)
+
+    context = {
+        'pocos_productos': pocos_productos,
+        'pocos_insumos': pocos_insumos,
+        'pocos_envases': pocos_envases,
+        }
+
+    return render(request, "gestor/index.html", context)
+
 def home(request):
     return render(request, "gestor/home.html")
 

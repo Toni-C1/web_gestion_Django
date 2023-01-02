@@ -1,0 +1,32 @@
+{% extends "gestor/base.html" %}
+
+{% block content %}
+
+<a href="/home">Administrar<a></a>
+
+<h3>Pedidos pendientes</h3>
+
+<br>
+
+<h3>Productos por debajo de punto de stock mínimo</h3>
+
+    {% for producto in pocos_productos %}
+        <li>{{ producto.nombre }}</li>
+    {% endfor %}
+
+<br>
+
+<h3>Insumos por debajo de punto de pedido</h3>
+    {% for insumo in pocos_insumos %}
+            <li>{{ insumo.nombre }}</li>
+    {% endfor %}
+
+    {% for envase in pocos_envases %}
+            <li>{{ envase.nombre }}</li>
+    {% endfor %}
+
+<br>
+
+<h3>Proxima compra de insumos</h3>
+
+{% endblock %}

@@ -9,6 +9,8 @@
                 <tr>
                     <td>Producto</td>
                     <td>Stock</td>
+                    <td>Lote</td>
+                    <td>Vencimiento</td>
                     <td>Fecha carga</td>
                     <td>Fecha modificado</td>
                 </tr>
@@ -19,6 +21,8 @@
                     <tr>
                     <td>{{ producto.nombre }}</td>
                     <td>{{ producto.stock }}</td>
+                    <td>{{ producto.lote }}</td>
+                    <td>{{ producto.fecha_vencimiento|date:"SHORT_DATE_FORMAT" }}</td>
                     <td>{{ producto.created|date:"SHORT_DATE_FORMAT" }}</td>
                     <td>{{ producto.modified|date:"SHORT_DATE_FORMAT" }}</td>
                     <td><a href="/productos_editar/{{ producto.id }}">Modificar</a></td>

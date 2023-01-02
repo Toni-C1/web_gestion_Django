@@ -7,5 +7,5 @@ class CamposAdmin(admin.ModelAdmin):
     readonly_fields = ('created','modified')
     list_display = ('nombre', 'stock', 'modified')
 
-admin.site.register(Productos, CamposAdmin)
-admin.site.register(Insumos, CamposAdmin)
+admin.site.register(Productos_l, CamposAdmin)
+admin.site.register(Insumos_l, CamposAdmin)

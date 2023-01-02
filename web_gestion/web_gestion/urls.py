@@ -32,5 +32,8 @@ urlpatterns = [
     path('insumos_crear/', insumos_crear),
     path('insumos_editar/<int:id_i>', insumos_editar),
     path('insumos_eliminar/<int:id_i>', insumos_eliminar),
+    path('envases_crear/', envases_crear),
+    path('envases_editar/<int:id_i>', envases_editar),
+    path('envases_eliminar/<int:id_i>', envases_eliminar),
   ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

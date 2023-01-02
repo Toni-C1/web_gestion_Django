@@ -40,5 +40,6 @@ urlpatterns = [
     path('historial_pedidos/', historial_pedidos),
     path('carga_pedidos/', carga_pedidos),
     path('modificar_pedidos/', modificar_pedidos),
+    path('clientes_crear/', clientes_crear),
   ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

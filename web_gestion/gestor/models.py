@@ -60,10 +60,10 @@ class Envases_li(models.Model):
         verbose_name = "Envase"
         verbose_name_plural = "Envases"
 
-class Pedidos_productos_l(models.Model):    
+class Pedidos_productos_li(models.Model):    
     id = models.IntegerField(primary_key=True, unique=True, auto_created=True)
     cliente = models.CharField(max_length=100)
-    nombre = models.CharField(max_length=100)
+    productos = models.CharField(max_length=100)
     cantidad = models.IntegerField()
     estado = models.CharField(max_length=100)
     created = models.DateTimeField(auto_now_add=True, verbose_name="Creado")
@@ -90,3 +90,17 @@ class Lista_compras_li(models.Model):
         verbose_name = "Compra"
         verbose_name_plural = "Compras"
 
+class Clientes_li(models.Model):    
+    id = models.IntegerField(primary_key=True, unique=True, auto_created=True)
+    nombre = models.CharField(unique=True, max_length=100)
+    tel = models.IntegerField(unique=True,)   #TODO no considera el cero a la izq
+    email = models.EmailField(max_length=254)
+    instagram = models.CharField(unique=True, max_length=100)
+    
+
+    def __str__(self):
+        return self.nombre
+
+    class Meta:
+        verbose_name = "Cliente"
+        verbose_name_plural = "Clientes"

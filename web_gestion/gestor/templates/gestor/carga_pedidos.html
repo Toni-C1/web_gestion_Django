@@ -3,6 +3,13 @@
 {% block content %}
 <h3>Cargar nuevo pedido</h3>
 
+<form method="POST" class="post-form">{% csrf_token %}
+
+    {{ form.as_p }}
+
+    <button type="submit" class="save btn btn-default">Guardar</button>
+</form>
+
 <br></br>
 <a href="/gestion_pedidos/">Volver<a></a>
 <br></br>

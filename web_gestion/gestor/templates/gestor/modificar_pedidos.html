@@ -3,6 +3,33 @@
 {% block content %}
 <h3>Modificar pedido pendiente</h3>
 
+<table id="pedidos_pendientes" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Cliente</td>
+            <td>Estado</td>
+            <td>Fecha carga</td>
+            <td>Fecha modificado</td>
+        </tr>
+    </thead>
+    <tbody>
+        
+        {% for pedido in pedidos %}
+            {% if pedido.estado == "Pendiente" %}
+                <tr>
+                    <td>{{ pedido.cliente }}</td>
+                    <td>{{ pedido.estado }}</td>
+                    <td>{{ pedido.created|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td>{{ pedido.modified|date:"SHORT_DATE_FORMAT" }}</td>
+                    <td><a href="/historial_pedidos/">Detalles</a></td>
+                </tr>
+            {% endif %}
+        {% endfor %}
+        
+    </tbody>
+
+</table>
+
 <br></br>
 <a href="/gestion_pedidos/">Volver<a></a>
 <br></br>

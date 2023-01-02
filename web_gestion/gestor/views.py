@@ -7,6 +7,14 @@ from django.http import HttpResponse
 
 def index(request):
 
+    ##chekeo de pedidos pendientes
+    pedidos = Pedidos_productos_li.objects.all()
+    pendientes = []
+
+    for pedido in pedidos:
+        if pedido.estado == 'Pendiente':
+            pendientes.append(pedido)
+
     ##chekeo de Productos por debajo de punto de pedido##
     productos = Productos_li.objects.all()
 
@@ -38,6 +46,7 @@ def index(request):
         'pocos_productos': pocos_productos,
         'pocos_insumos': pocos_insumos,
         'pocos_envases': pocos_envases,
+        'pendientes': pendientes,
         }
 
     return render(request, "gestor/index.html", context)
@@ -247,21 +256,71 @@ def gestion_pedidos(request):
 
 def historial_pedidos(request):
 
+    pedidos = Pedidos_productos_li.objects.all()
+
     context = {
-        
+        'pedidos': pedidos,
         }
     return render(request, "gestor/historial_pedidos.html", context)
 
 def carga_pedidos(request):
 
+      #####################################
+
+    #Formulario cargar nuevo pedido
+    form = Pedido_Form()
+    if request.method == "POST":
+    
+        form = Pedido_Form(request.POST)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+
+        return redirect("/gestion_pedidos")
+
+    else:
+        form = Pedido_Form()
+    ####################################
+
     context = {
-        
+        'form': form,
         }
     return render(request, "gestor/carga_pedidos.html", context)
 
 def modificar_pedidos(request):
 
+    pedidos = Pedidos_productos_li.objects.all()
+
     context = {
-        
+        'pedidos': pedidos,
         }
+
     return render(request, "gestor/modificar_pedidos.html", context)
+
+
+def clientes_crear(request):
+    clientes = Clientes_li.objects.all()
+    
+    #####################################
+
+    #Formulario cargar nuevo cliente a la bd
+    form = Cliente_Form()
+    if request.method == "POST":
+    
+        form = Cliente_Form(request.POST)
+
+        if form.is_valid():
+            post = form.save(commit=False)
+            post.save()
+
+    else:
+        form = Cliente_Form()
+    ####################################
+
+    context = {
+        'form': form,
+        'clientes': clientes
+        }
+
+    return render(request, "gestor/clientes_crear.html", context)

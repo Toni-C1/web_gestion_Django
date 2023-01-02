@@ -26,3 +26,22 @@ class Envase_Form(forms.ModelForm):
     class Meta:
         model = Envases_li
         fields = ('nombre', 'stock', 'punto_de_pedido')
+
+ESTADO_CHOICES = (
+    ('Pendiente', 'Pendiente'),
+    ('Completado', 'Completado'),
+    ('Cancelado', 'Cancelado'),
+)
+
+class Pedido_Form(forms.ModelForm):
+
+    estado = forms.ChoiceField(choices=ESTADO_CHOICES)
+
+    class Meta:
+        model = Pedidos_productos_li
+        fields = ('cliente','productos', 'cantidad', 'estado')
+
+class Cliente_Form(forms.ModelForm):
+    class Meta:
+        model = Clientes_li
+        fields = ('nombre', 'tel', 'email', 'instagram')

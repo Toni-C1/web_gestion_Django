@@ -6,6 +6,10 @@
 
 <h3>Pedidos pendientes</h3>
 
+    {% for pendiente in pendientes %}
+        <li>{{ pendiente.cliente }}</li>
+    {% endfor %}
+
 <br>
 
 <h3>Productos por debajo de punto de stock mínimo</h3>

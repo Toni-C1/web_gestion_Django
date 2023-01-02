@@ -36,5 +36,9 @@ urlpatterns = [
     path('envases_crear/', envases_crear),
     path('envases_editar/<int:id_i>', envases_editar),
     path('envases_eliminar/<int:id_i>', envases_eliminar),
+    path('gestion_pedidos/', gestion_pedidos),
+    path('historial_pedidos/', historial_pedidos),
+    path('carga_pedidos/', carga_pedidos),
+    path('modificar_pedidos/', modificar_pedidos),
   ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

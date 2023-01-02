@@ -237,3 +237,31 @@ def envases_eliminar(request, id_i):
     id_envases.delete()
     
     return redirect("/envases_crear")
+
+def gestion_pedidos(request):
+
+    context = {
+        
+        }
+    return render(request, "gestor/gestion_pedidos.html", context)
+
+def historial_pedidos(request):
+
+    context = {
+        
+        }
+    return render(request, "gestor/historial_pedidos.html", context)
+
+def carga_pedidos(request):
+
+    context = {
+        
+        }
+    return render(request, "gestor/carga_pedidos.html", context)
+
+def modificar_pedidos(request):
+
+    context = {
+        
+        }
+    return render(request, "gestor/modificar_pedidos.html", context)

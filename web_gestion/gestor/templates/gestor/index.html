@@ -2,9 +2,10 @@
 
 {% block content %}
 
-<a href="/home">Administrar<a></a>
+<a href="/home">Administrar</a>
 
-<h3>Pedidos pendientes</h3>
+
+<h3> <a href="/modificar_pedidos">Pedidos pendientes {{ cantidad_pendientes }}</a></h3>
 
     {% for pendiente in pendientes %}
         <li>{{ pendiente.cliente }}</li>

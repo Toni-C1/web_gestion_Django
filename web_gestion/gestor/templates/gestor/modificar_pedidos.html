@@ -6,6 +6,7 @@
 <table id="pedidos_pendientes" class="table table-striped">
     <thead>
         <tr>
+            <td>nº</td>
             <td>Cliente</td>
             <td>Estado</td>
             <td>Fecha carga</td>
@@ -17,11 +18,14 @@
         {% for pedido in pedidos %}
             {% if pedido.estado == "Pendiente" %}
                 <tr>
+                    <td>{{ pedido.id }}</td>
                     <td>{{ pedido.cliente }}</td>
                     <td>{{ pedido.estado }}</td>
                     <td>{{ pedido.created|date:"SHORT_DATE_FORMAT" }}</td>
                     <td>{{ pedido.modified|date:"SHORT_DATE_FORMAT" }}</td>
-                    <td><a href="/historial_pedidos/">Detalles</a></td>
+                    <td><a href="/detalle_pedidos/{{ pedido.id }}">Detalles</a></td>
+                    <td><a href="/pedido_completado/{{ pedido.id }}">Competado</a></td>
+                    <td><a href="/pedido_cancelado/{{ pedido.id }}">Cancelado</a></td>
                 </tr>
             {% endif %}
         {% endfor %}

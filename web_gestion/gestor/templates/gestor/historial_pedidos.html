@@ -6,6 +6,7 @@
 <table id="historial_pedidos" class="table table-striped">
     <thead>
         <tr>
+            <td>nº</td>
             <td>Cliente</td>
             <td>Estado</td>
             <td>Fecha carga</td>
@@ -16,11 +17,12 @@
         
         {% for pedido in pedidos %}
             <tr>
+                <td>{{ pedido.id }}</td>
                 <td>{{ pedido.cliente }}</td>
                 <td>{{ pedido.estado }}</td>
                 <td>{{ pedido.created|date:"SHORT_DATE_FORMAT" }}</td>
                 <td>{{ pedido.modified|date:"SHORT_DATE_FORMAT" }}</td>
-                <td><a href="/historial_pedidos/">Detalles</a></td>
+                <td><a href="/detalle_pedidos/{{ pedido.id }}">Detalles</a></td>
             </tr>
         {% endfor %}
         

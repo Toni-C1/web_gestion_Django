@@ -3,14 +3,25 @@
 {% block content %}
 <h3>Cargar nuevo pedido</h3>
 
+<!--#TODO recargar si creo nuevo cliente-->
+
 <form method="POST" class="post-form">{% csrf_token %}
 
-    {{ form.as_p }}
+    
+        {{ form }}
+    
 
-    <button type="submit" class="save btn btn-default">Guardar</button>
+    <br></br>
+    <a href="/clientes_crear/">Crear nuevo cliente<a></a>
+
+    <br></br>
+    <button type="submit" class="save btn btn-default">Cargar</button>
 </form>
 
+
+
 <br></br>
+
 <a href="/gestion_pedidos/">Volver<a></a>
 <br></br>
 <a href="/">Inicio<a></a>

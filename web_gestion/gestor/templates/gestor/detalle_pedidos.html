@@ -1,0 +1,34 @@
+{% extends "gestor/base.html" %}
+
+{% block content %}
+<h3>Detalle de pedido</h3>
+<br></br>
+<li>nº pedido: {{ detallar.id }}</li>
+<li>Cliente: {{ detallar.cliente }}</li>
+<br></br>
+<table id="productors_pedido" class="table table-striped">
+    <thead>
+        <tr>
+            <td>Cantidad</td>
+            <td>Producto</td>     
+        </tr>
+    </thead>
+    <tbody>
+       
+
+        {% for pedido in lista_actual %}          
+            <tr>
+                <td>{{ pedido.cantidad }}</td>
+                <td>{{ pedido.producto_id }}</td>      
+            </tr>
+        {% endfor %}
+        
+    </tbody>
+
+</table>
+
+<br></br>
+<a href="javascript: history.go(-1)">Volver<a></a>
+<br></br>
+<a href="/">Inicio<a></a>
+{% endblock %}

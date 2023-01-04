@@ -39,9 +39,18 @@ class Pedido_Form(forms.ModelForm):
 
     class Meta:
         model = Pedidos_productos_li
-        fields = ('cliente','productos', 'cantidad', 'estado')
+        fields = ('cliente','estado')
+
+    
 
 class Cliente_Form(forms.ModelForm):
     class Meta:
         model = Clientes_li
         fields = ('nombre', 'tel', 'email', 'instagram')
+ 
+
+class Prod_en_pedido_Form(forms.ModelForm):
+    
+    class Meta:
+        model = Pedido_intermedio_li
+        fields = ('id_pedido', 'producto', 'cantidad')

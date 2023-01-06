@@ -50,7 +50,10 @@ class Cliente_Form(forms.ModelForm):
  
 
 class Prod_en_pedido_Form(forms.ModelForm):
-    
+
     class Meta:
+
+        #id_pedido = forms.IntegerField(widget=forms.HiddenInput(),initial=Pedidos_productos_li.objects.get(id=1))
+
         model = Pedido_intermedio_li
-        fields = ('id_pedido', 'producto', 'cantidad')
+        fields = ('producto', 'cantidad', 'id_pedido')

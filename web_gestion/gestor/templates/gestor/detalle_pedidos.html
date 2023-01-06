@@ -11,6 +11,9 @@
         <tr>
             <td>Cantidad</td>
             <td>Producto</td>     
+            {% if detallar.estado == 'Pendiente' %}
+                <td><a href="/editar_pedidos/{{ detallar.id }}">Modificar</a></td>
+            {% endif %}
         </tr>
     </thead>
     <tbody>
@@ -19,7 +22,7 @@
         {% for pedido in lista_actual %}          
             <tr>
                 <td>{{ pedido.cantidad }}</td>
-                <td>{{ pedido.producto_id }}</td>      
+                <td>{{ pedido.producto_id }}</td>  
             </tr>
         {% endfor %}
         

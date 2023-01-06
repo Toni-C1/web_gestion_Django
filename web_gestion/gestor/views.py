@@ -257,6 +257,14 @@ def gestion_pedidos(request):
         }
     return render(request, "gestor/gestion_pedidos.html", context)
 
+def pedido_eliminar(request, id_i):
+    
+    pedido = Pedidos_productos_li.objects.get(id=id_i)
+    
+    pedido.delete()
+    
+    return redirect("/gestion_pedidos")
+
 def historial_pedidos(request):
 
     pedidos = Pedidos_productos_li.objects.all()
@@ -281,9 +289,10 @@ def carga_pedidos(request):
             post.save()
 
             u = Pedidos_productos_li.objects.last()
-            print(f"\npost:{u.id}")
+            url_prox = "/carga_pedidos_2/"+ str(u.id)
+            #print(f"\nurl_prox:{url_prox}")
             
-            return redirect("/carga_pedidos_2/")
+            return redirect(url_prox)
 
     else:
         print("Formulario no válido")
@@ -296,9 +305,29 @@ def carga_pedidos(request):
 
     return render(request, "gestor/carga_pedidos.html", context)
 
-def carga_pedidos_2(request):
+def carga_pedidos_2(request, id_i):
 
-    ultimo = Pedidos_productos_li.objects.last()
+    id_u = int(id_i)
+
+    ultimo = Pedidos_productos_li.objects.get(id=id_u)
+    #####################################
+
+    #Formulario cargar productos al pedido
+  
+    form = Prod_en_pedido_Form(request.POST)
+
+    if form.is_valid():
+        post = form.save(commit=False)
+
+        post.save()
+        
+    #return redirect("/gestion_pedidos")
+
+    else:
+        form = Prod_en_pedido_Form()
+    ####################################
+
+    
 
     lista_actual = []
  
@@ -316,21 +345,6 @@ def carga_pedidos_2(request):
     
     
     
-    #####################################
-
-    #Formulario cargar productos al pedido
-  
-    form = Prod_en_pedido_Form(request.POST or None, initial={'id_pedido':ultimo.cliente})
-
-    if form.is_valid():
-        post = form.save(commit=False)
-        post.save()
-        
-    #return redirect("/gestion_pedidos")
-
-    else:
-        form = Prod_en_pedido_Form()
-    ####################################
 
 
     context = {
@@ -404,6 +418,56 @@ def detalle_pedidos(request, id_i):
 
     return render(request, "gestor/detalle_pedidos.html", context)
 
+def editar_pedidos(request, id_i):
+
+    id_producto_en_pedido = int(id_i)
+
+    print(f"\nid recibido: {id_producto_en_pedido}")
+
+    produc = Pedido_intermedio_li.objects.values().filter(id=id_producto_en_pedido)
+
+    id_2= produc[0]['id_pedido_id']
+    #cliente = 
+
+    print(f"\nid pedido: {id_2}")
+
+    
+
+    print(f"\nproducto: {produc}")
+
+    
+
+    lista_actual = []
+
+    try:
+        n_pedido = Pedido_intermedio_li.objects.get(id=id_producto_en_pedido)
+        print(f"\npedido: {n_pedido}")
+
+    except Pedido_intermedio_li.DoesNotExist:
+        print(f"\nProducto no encontrado")
+ 
+    
+
+    form_e = Prod_en_pedido_Form(request.POST or None,  instance=n_pedido)
+
+    
+ 
+    if form_e.is_valid():
+        form_e.save()
+
+        #u = Pedidos_productos_li.objects.last()
+        url_prox = "/carga_pedidos_2/"+ str(id_2)
+
+        return redirect(url_prox)
+    
+    context = {
+        'form_e':form_e,
+        'n_pedido':id_2,
+        'lista_actual':lista_actual
+        }
+
+    return render(request, "gestor/editar_pedidos.html", context)
+
 def pedido_cancelado(request, id_i):
     
     id_pedido = Pedidos_productos_li.objects.get(id=id_i)
@@ -424,10 +488,12 @@ def pedido_completado(request, id_i):
     
     return redirect("/modificar_pedidos")
 
-def eliminar_de_pedido(request, id_i):
+def eliminar_de_pedido(request, id_i, id_u):
     
     id_producto = Pedido_intermedio_li.objects.get(id=id_i)
     
     id_producto.delete()
+
+    url_prox = "/carga_pedidos_2/"+ str(id_u)
     
-    return redirect("/carga_pedidos_2")
+    return redirect(url_prox)

@@ -39,12 +39,14 @@ urlpatterns = [
     path('gestion_pedidos/', gestion_pedidos),
     path('historial_pedidos/', historial_pedidos),
     path('carga_pedidos/', carga_pedidos),
-    path('carga_pedidos_2/', carga_pedidos_2),
+    path('carga_pedidos_2/<int:id_i>', carga_pedidos_2),
     path('modificar_pedidos/', modificar_pedidos),
     path('clientes_crear/', clientes_crear),
     path('detalle_pedidos/<int:id_i>', detalle_pedidos),
+    path('editar_pedidos/<int:id_i>', editar_pedidos),
     path('pedido_cancelado/<int:id_i>', pedido_cancelado),
+    path('pedido_eliminar/<int:id_i>', pedido_eliminar),
     path('pedido_completado/<int:id_i>', pedido_completado),
-    path('eliminar_de_pedido/<int:id_i>', eliminar_de_pedido),
+    path('eliminar_de_pedido/<int:id_i>/<int:id_u>', eliminar_de_pedido),
   ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

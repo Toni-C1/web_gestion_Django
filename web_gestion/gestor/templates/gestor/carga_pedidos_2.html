@@ -5,7 +5,7 @@
 <br></br>
 <li>nº pedido: {{ ultimo.id }}</li>
 <li>Cliente: {{ ultimo.cliente }}</li>
-<!--td><a href="/carga_pedidos_2/{{ ultimo.id  }}">Agregar producto</a></td-->
+
 <br></br>
 <form method="POST" class="post-form">{% csrf_token %}
 
@@ -37,8 +37,8 @@
             <tr>
                 <td>{{ pedido.cantidad }}</td>
                 <td>{{ pedido.producto_id }}</td>      
-                <td><a href="/envases_editar/{{ pedido.id }}">Modificar</a></td>
-                <td><a href="/eliminar_de_pedido/{{ pedido.id }}">Eliminar</a></td>
+                <td><a href="/editar_pedidos/{{ pedido.id }}">Modificar</a></td>
+                <td><a href="/eliminar_de_pedido/{{ pedido.id }}/{{ ultimo.id }}">Eliminar</a></td>
             </tr>
         {% endfor %}
         
@@ -49,7 +49,7 @@
 <a href="/detalle_pedidos/{{ ultimo.id }}">Cerrar pedido<a></a>
 
 <br></br>
-<a href="/gestion_pedidos/">Volver</a>
+<a href="/pedido_eliminar/{{ ultimo.id }}">Cancelar</a>
 <br></br>
 <a href="/">Inicio</a>
 {% endblock %}

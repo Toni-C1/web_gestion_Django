@@ -77,8 +77,8 @@ class Clientes_li(models.Model):
 class Pedidos_productos_li(models.Model):    
     id = models.IntegerField(primary_key=True, unique=True, auto_created=True)
     cliente = models.ForeignKey(Clientes_li, on_delete=models.CASCADE)
-    #productos = models.CharField(max_length=100)
-    #cantidad = models.IntegerField()
+    entregado = models.BooleanField(default=True)
+    pagado = models.BooleanField(default=True)
     estado = models.CharField(max_length=100, default="Pendiente")
     created = models.DateTimeField(auto_now_add=True, verbose_name="Creado")
     modified = models.DateTimeField(auto_now=True, verbose_name="Última modificación")

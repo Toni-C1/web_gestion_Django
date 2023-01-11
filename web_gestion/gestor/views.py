@@ -483,6 +483,36 @@ def pedido_completado(request, id_i):
     id_pedido = Pedidos_productos_li.objects.get(id=id_i)
     
     id_pedido.estado = "Completado"
+    id_pedido.entregado = True
+    id_pedido.pagado = True
+
+
+    id_pedido.save()
+    
+    return redirect("/modificar_pedidos")
+
+def pedido_entregado(request, id_i):
+    
+    id_pedido = Pedidos_productos_li.objects.get(id=id_i)
+    
+    if id_pedido.entregado == False:
+        id_pedido.entregado = True
+    else:
+        id_pedido.entregado = False
+
+    id_pedido.save()
+    
+    return redirect("/modificar_pedidos")
+
+def pedido_pagado(request, id_i):
+    
+    id_pedido = Pedidos_productos_li.objects.get(id=id_i)
+
+    if id_pedido.pagado == False:
+        id_pedido.pagado = True
+    else:
+        id_pedido.pagado = False
+    
 
     id_pedido.save()
     

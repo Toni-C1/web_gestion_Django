@@ -47,6 +47,8 @@ urlpatterns = [
     path('pedido_cancelado/<int:id_i>', pedido_cancelado),
     path('pedido_eliminar/<int:id_i>', pedido_eliminar),
     path('pedido_completado/<int:id_i>', pedido_completado),
+    path('pedido_entregado/<int:id_i>', pedido_entregado),
+    path('pedido_pagado/<int:id_i>', pedido_pagado),
     path('eliminar_de_pedido/<int:id_i>/<int:id_u>', eliminar_de_pedido),
   ]+ static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

@@ -3,12 +3,14 @@
 {% block content %}
 <h3>Historial de pedidos</h3>
 
-<table id="historial_pedidos" class="table table-striped">
+<table id="historial_pedidos" class="table">
     <thead>
         <tr>
             <td>nº</td>
             <td>Cliente</td>
             <td>Estado</td>
+            <td>Entregado</td>
+            <td>Pagado</td>
             <td>Fecha carga</td>
             <td>Fecha modificado</td>
         </tr>
@@ -20,6 +22,8 @@
                 <td>{{ pedido.id }}</td>
                 <td>{{ pedido.cliente }}</td>
                 <td>{{ pedido.estado }}</td>
+                <td>{{ pedido.entregado }}</td>
+                <td>{{ pedido.pagado }}</td>
                 <td>{{ pedido.created|date:"SHORT_DATE_FORMAT" }}</td>
                 <td>{{ pedido.modified|date:"SHORT_DATE_FORMAT" }}</td>
                 <td><a href="/detalle_pedidos/{{ pedido.id }}">Detalles</a></td>
